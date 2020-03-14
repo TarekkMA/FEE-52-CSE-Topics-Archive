@@ -1,0 +1,11 @@
+{
+  "name": "archive-topics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "TarekkMA@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer-core": "^2.1.1"
+  },
+  "scripts": {}
+}
