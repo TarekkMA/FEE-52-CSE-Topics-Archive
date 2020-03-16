@@ -1,10 +1,13 @@
 //@ts-check
 const puppeteer = require("puppeteer-core");
+const utils = require("./utils");
 const fs = require("fs");
+const scrapper = require("./topics-scrapper");
+
 const fsp = fs.promises;
 
-const windowWidth = 1980;
-const windowHeight = 1080;
+const windowWidth = 1366;
+const windowHeight = 768;
 
 const browserExecutablePath =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -19,13 +22,11 @@ const cookiesPath = "./cookies.json";
     });
     const page = await browser.newPage();
     await page.setViewport({ width: windowWidth, height: windowHeight });
-
     await restoreCookies(page);
-    await page.goto(
-      "https://www.facebook.com/" //groups/2401660223266519/post_tags_list/"
-    );
 
-    await delay(60000 * 5);
+    await scrapper(page);
+
+    await utils.delay(5000);
     await saveCookies(page);
     await browser.close();
   } catch (error) {
@@ -51,11 +52,5 @@ function fileExist(filePath) {
     fs.exists(filePath, exists => {
       resolve(exists);
     });
-  });
-}
-
-function delay(time) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, time);
   });
 }
