@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     postMessage() {
-      return this.post.message.replace("\n", "<br/>");
+      return this.post.message.replace("\n", "<br/>").replace("\\n", "<br/>>");
     },
     username() {
       return this.post.authorLink.replace("https://www.facebook.com/", "");
