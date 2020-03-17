@@ -56,6 +56,12 @@
           :key="post.date"
         ></Post>
       </div>
+      <dir v-else class="notSelected">
+        <h3>
+          Select a topic from the dropdown menu or click on the
+          <b-icon icon="menu"></b-icon> icon to revel the topics
+        </h3>
+      </dir>
     </div>
   </div>
 </template>
@@ -119,6 +125,9 @@ export default {
 #mainBody {
   padding-bottom: 2em;
   padding-top: 2em;
+}
+#notSelected {
+  padding-top: 5em;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

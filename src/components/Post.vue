@@ -8,18 +8,16 @@
       </div>
       <div class="media-content">
         <div class="content">
-          <span>
-            <a :href="post.authorLink" target="_blank"
-              ><strong>{{ post.authorName }}</strong></a
-            >
-            <small> {{ postTime }}</small>
-            <br />
-            <small> @{{ username }}</small>
-            <br />
-            <p dir="rtl" v-linkified v-html="postMessage"></p>
+          <a :href="post.authorLink" target="_blank"
+            ><strong>{{ post.authorName }}</strong></a
+          >
+          <small> {{ postTime }}</small>
+          <br />
+          <small> @{{ username }}</small>
+          <br />
+          <p dir="rtl" v-linkified v-html="postMessage"></p>
 
-            <p></p
-          ></span>
+          <p></p>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
