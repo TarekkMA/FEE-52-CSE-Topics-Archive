@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar>
+    <b-navbar fixed-top>
       <template slot="brand">
         <b-navbar-item href="/">
           <span class="title">FEE 52 Topics Archive</span>
@@ -48,7 +48,7 @@
         </b-navbar-item>
       </template>
     </b-navbar>
-    <div class="container">
+    <div class="container" id="mainBody">
       <div v-if="selectedTopic">
         <Post
           v-for="post in selectedTopic"
@@ -116,6 +116,10 @@ export default {
 </script>
 
 <style>
+#mainBody {
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

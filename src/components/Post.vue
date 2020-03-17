@@ -8,26 +8,29 @@
       </div>
       <div class="media-content">
         <div class="content">
-          <div dir="rtl" style="direction:rtl;">
-            <p v-html="postMessage" v-linkified></p>
-          </div>
+          <span>
+            <a :href="post.authorLink" target="_blank"
+              ><strong>{{ post.authorName }}</strong></a
+            >
+            <small> {{ postTime }}</small>
+            <br />
+            <small> @{{ username }}</small>
+            <br />
+            <p dir="rtl" v-linkified v-html="postMessage"></p>
+
+            <p></p
+          ></span>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
-            <a class="level-item" aria-label="reply">
-              <span class="icon is-small">
-                <i class="far fa-reply" aria-hidden="true"></i>
-              </span>
-            </a>
-            <a class="level-item" aria-label="retweet">
-              <span class="icon is-small">
-                <i class="far fa-retweet" aria-hidden="true"></i>
-              </span>
-            </a>
-            <a class="level-item" aria-label="like">
-              <span class="icon is-small">
-                <i class="far fa-heart" aria-hidden="true"></i>
-              </span>
+            <a
+              class="level-item"
+              aria-label="retweet"
+              :href="post.link"
+              target="_blank"
+            >
+              <b-icon icon="link"></b-icon>
+              Original Post
             </a>
           </div>
         </nav>
@@ -37,6 +40,8 @@
 </template>
 
 <script>
+const moment = require("moment");
+
 export default {
   props: ["post"],
   data() {
@@ -49,6 +54,13 @@ export default {
   computed: {
     postMessage() {
       return this.post.message.replace("\n", "<br/>");
+    },
+    username() {
+      return this.post.authorLink.replace("https://www.facebook.com/", "");
+    },
+    postTime() {
+      let x = moment.unix(parseInt(this.post.date));
+      return x.fromNow() + " - " + x.format("dddd, MMMM Do YYYY, h:mm:ss a");
     }
   },
   mounted() {}
