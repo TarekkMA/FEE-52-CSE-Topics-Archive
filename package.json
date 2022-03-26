@@ -5,7 +5,7 @@
   "author": "TarekkMA@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "minimist": "^1.2.2",
+    "minimist": "^1.2.6",
     "puppeteer-core": "^2.1.1"
   },
   "scripts": {}
